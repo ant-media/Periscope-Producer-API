@@ -7,7 +7,7 @@ and lots of tech sites like [Variety](http://variety.com/2017/digital/news/twitt
 
 ## Installation
  
-Download from here or build by following the Build instructions below. Then add this library to your classpath.
+Download from [here](https://github.com/ant-media/Periscope-Producer-API/releases) or build by following the Build instructions below. Then add this library to your classpath.
 
 ## How To Use
 

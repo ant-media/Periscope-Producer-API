@@ -8,13 +8,17 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
+import io.antmedia.periscope.AuthorizationEndpoints;
 import io.antmedia.periscope.BroadcastEndpoints;
 import io.antmedia.periscope.PeriscopeEndpointFactory;
 import io.antmedia.periscope.RegionEndpoints;
 import io.antmedia.periscope.response.AuthorizationResponse;
+import io.antmedia.periscope.response.CheckDeviceCodeResponse;
 import io.antmedia.periscope.response.CreateBroadcastResponse;
+import io.antmedia.periscope.response.CreateDeviceCodeResponse;
 import io.antmedia.periscope.response.PublishBroadcastResponse;
 import io.antmedia.periscope.type.Broadcast;
+
 
 /**
  * 
@@ -23,21 +27,86 @@ import io.antmedia.periscope.type.Broadcast;
  * @author mekya
  *
  */
+
+
 public class EndpointsTests {
-	
-	public static final String CLIENT_ID = "WRITE YOUR DEV CLIENT ID";
-	
+
+	public static final String CLIENT_ID = "3uUjYUYH8XX8ikOhfo45s_slM4xDZ9fxMN32T3m5xIrTU2LyrO";
+	//"WRITE YOUR DEV CLIENT ID";
+
 	public static final String CLIENT_SECRET = "WRITE YOUR DEV CLIENT SECRET";
-	
-	public static final String DEV_ACCESS_TOKEN = "";
-	public static final String DEV_REFRESH_TOKEN = "";
-	
+
+	public static String DEV_ACCESS_TOKEN = "WRITE YOUR DEV ACCESS TOKEN ";
+	public static String DEV_REFRESH_TOKEN = "WRITE YOUR DEV REFRESH TOKEN ";
+
 	public static final String TOKEN_TYPE = "Bearer";
+
+	//@Test
+	public void testAuthorizeWithDeviceCode() {
+		AuthorizationEndpoints authorizationEndpoint = PeriscopeEndpointFactory.getAuthorizationEndpoint();
+		CreateDeviceCodeResponse createDeviceCodeResponse;
+		try {
+			createDeviceCodeResponse = authorizationEndpoint.createDeviceCode(CLIENT_ID);
+
+			assertNotNull(createDeviceCodeResponse);
+
+			System.out.println("Go to this url: " + createDeviceCodeResponse.associate_url);
+			System.out.println("Enter this user code: " + createDeviceCodeResponse.user_code);
+			System.out.println("and come back here");
+
+			CheckDeviceCodeResponse checkDeviceCode;
+			do {
+				System.out.println("Waiting for " + createDeviceCodeResponse.interval + " seconds to check device code");
+				Thread.sleep(createDeviceCodeResponse.interval * 1000);
+
+				checkDeviceCode = authorizationEndpoint.checkDeviceCode(createDeviceCodeResponse.device_code, CLIENT_ID);
+				
+				System.out.println("State: " + checkDeviceCode.state);
+				
+
+			} while(!checkDeviceCode.state.equals("associated"));
+			
+			assertTrue(checkDeviceCode.state.equals("associated"));
+			DEV_ACCESS_TOKEN = checkDeviceCode.access_token;
+			System.out.println("access token: " + DEV_ACCESS_TOKEN);
+			DEV_REFRESH_TOKEN = checkDeviceCode.refresh_token;
+			System.out.println("refresh token: " + DEV_REFRESH_TOKEN);
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+
+	}
 	
+	
+	
+	public void testAuthorizeWithOauth2() {
+		AuthorizationEndpoints authorizationEndpoint = PeriscopeEndpointFactory.getAuthorizationEndpoint();
+		String code = "code returned by periscope";
+		String redirect_uri = " redirect uri in your application";
+		
+		try {
+			AuthorizationResponse authorizationResponse = authorizationEndpoint.authWithOauth2(AuthorizationEndpoints.GRANT_TYPE_AUTHORIZATION_CODE, 
+					code, redirect_uri, null, CLIENT_ID, CLIENT_SECRET);
+			
+			assertNotNull(authorizationResponse);
+			//save access token, refresh token variables
+			DEV_ACCESS_TOKEN = authorizationResponse.access_token;
+			DEV_REFRESH_TOKEN = authorizationResponse.refresh_token;
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+
+
 	@Test
 	public void testRegionGet() {
 		RegionEndpoints regionEndpoints = new RegionEndpoints("Bearer", DEV_ACCESS_TOKEN);
-		
+
 		try {
 			String region = regionEndpoints.get();
 			// {"region":"us-west-1"} 
@@ -50,11 +119,12 @@ public class EndpointsTests {
 			fail(e.toString());
 		}
 	}
-	
+
 	@Test
 	public void testCreateBroadcast() {
-		BroadcastEndpoints endpoint = new BroadcastEndpoints("Bearer", DEV_ACCESS_TOKEN);
-		RegionEndpoints regionEndpoints = new RegionEndpoints("Bearer", DEV_ACCESS_TOKEN);
+		PeriscopeEndpointFactory periscopeEndpointFactory = new PeriscopeEndpointFactory(TOKEN_TYPE, DEV_ACCESS_TOKEN, DEV_REFRESH_TOKEN);
+		BroadcastEndpoints endpoint = periscopeEndpointFactory.getBroadcastEndpoints();
+		RegionEndpoints regionEndpoints = periscopeEndpointFactory.getRegionEndpoints();
 		
 		try {
 			CreateBroadcastResponse createBroadcastResponse = endpoint.createBroadcast(regionEndpoints.get(), false);
@@ -64,57 +134,57 @@ public class EndpointsTests {
 			assertNotNull(createBroadcastResponse.encoder.rtmps_url);
 			assertNotNull(createBroadcastResponse.encoder.stream_key);
 			assertNotNull(createBroadcastResponse.encoder.recommended_configuration);
-			
+
 			assertNotNull(createBroadcastResponse.video_access.hls_url);
 			assertNotNull(createBroadcastResponse.video_access.https_hls_url);
-			
+
 			assertNotNull(createBroadcastResponse.share_url);
-			
+
 
 			String title = "test";
 			PublishBroadcastResponse publishBroadcastResponse = endpoint.publishBroadcast(createBroadcastResponse.broadcast.id, title, true, new Locale("tr", "TR").toString());
-		
+
 			assertEquals(createBroadcastResponse.broadcast.id, publishBroadcastResponse.broadcast.id);
 			assertEquals(publishBroadcastResponse.broadcast.state, "running");
 			assertEquals(publishBroadcastResponse.broadcast.title, title);
-			
-			
+
+
 			endpoint.stopBroadcast(publishBroadcastResponse.broadcast.id);
-			
-			
+
+
 			Broadcast broadcast = endpoint.getBroadcast(publishBroadcastResponse.broadcast.id);
 			assertEquals(broadcast.id, publishBroadcastResponse.broadcast.id);
 			assertEquals(broadcast.state, "ended");
 			assertEquals(broadcast.title, title);
-			
+
 			endpoint.deleteBroadcast(publishBroadcastResponse.broadcast.id);
-			
+
 			try {
 				broadcast = endpoint.getBroadcast(publishBroadcastResponse.broadcast.id);
 				fail("broadcast should have been deleted and function above threw an exception");
 			}
 			catch (Exception e) {
-				
+
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			fail(e.toString());
 		}
-		
+
 	}
-	
-	
-	
+
+
+
 	public void testRefreshToken() {
 		PeriscopeEndpointFactory factory = new PeriscopeEndpointFactory("Bearer", DEV_ACCESS_TOKEN, DEV_REFRESH_TOKEN);
-		
+
 		AuthorizationResponse response = factory.refreshToken(CLIENT_ID, CLIENT_SECRET);
 		System.out.println(response);
-		
+
 	}
-	
-	
-	
+
+
+
 
 }

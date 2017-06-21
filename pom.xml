@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>io.antmedia.plugins</groupId>
 	<artifactId>PeriscopeAPI</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0</version>
 	<build>
 		<resources>
 			<resource>
@@ -63,4 +63,35 @@
 			<scope>compile</scope>
 		</dependency>
 	</dependencies>
+	<organization>
+		<name>Ant Media</name>
+		<url>http://antmedia.io</url>
+	</organization>
+	<name>Periscope Producer API</name>
+	<url>https://github.com/ant-media/Periscope-Producer-API</url>
+	<description>Java implementation of Periscope Producer API</description>
+	<scm>
+		<connection>scm:git:git@github.com:ant-media/Periscope-Producer-API.git</connection>
+		<developerConnection>scm:git:git@github.com:ant-media/Periscope-Producer-API.git</developerConnection>
+		<url>git@github.com:ant-media/Periscope-Producer-API.git</url>
+	</scm>
+	<licenses>
+		<license>
+			<name>The Apache License, Version 2.0 (ALv2)</name>
+			<url>https://www.apache.org/licenses/LICENSE-2.0</url>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>mekya</name>
+			<email>mekya@antmedia.io</email>
+			<organization>Ant Media</organization>
+			<organizationUrl>http://antmedia.io</organizationUrl>
+		</developer>
+	</developers>
+	<issueManagement>
+		<system>github</system>
+		<url>https://github.com/ant-media/Periscope-Producer-API</url>
+	</issueManagement>
 </project>

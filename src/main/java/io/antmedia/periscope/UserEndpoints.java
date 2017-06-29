@@ -27,8 +27,8 @@ public class UserEndpoints extends BaseEndpoints {
 
 	/**
 	 * Get the current user object.
-	 * @return
-	 * @throws Exception
+	 * @return UserResponse
+	 * @throws Exception If operation is not successfull
 	 */
 	public UserResponse get() throws Exception {
 

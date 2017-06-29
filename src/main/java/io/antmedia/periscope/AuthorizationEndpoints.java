@@ -55,8 +55,8 @@ public class AuthorizationEndpoints extends BaseEndpoints{
 	 * @param client_id - Client ID unique to the hardware/software vendor. Currently these are available
 	 *    by contacting Periscope support.
 	 *    
-	 * @return
-	 * @throws Exception
+	 * @return CreateDeviceCodeResponse class
+	 * @throws Exception if operation is not successfull
 	 */
 	public CreateDeviceCodeResponse createDeviceCode(String client_id) throws Exception {
 
@@ -94,8 +94,8 @@ public class AuthorizationEndpoints extends BaseEndpoints{
 	 * @param client_id - Client ID unique to the hardware/software vendor. Currently these are available
 	 * 	  by contacting Periscope support.
 	 * 
-	 * @return
-	 * @throws Exception
+	 * @return CheckDeviceCodeResponse
+	 * @throws Exception if operation is not successfull
 	 */
 	public CheckDeviceCodeResponse checkDeviceCode(String deviceCode, String client_id) throws Exception {
 
@@ -142,8 +142,8 @@ public class AuthorizationEndpoints extends BaseEndpoints{
 	 * For implementations in purely in-browser applications, or in mobile apps, email
 	 * jboiles@twitter.com to ask about our Implicit OAuth2 flow)
 	 * 
-	 * @return
-	 * @throws Exception
+	 * @return AuthorizationResponse
+	 * @throws Exception if operation is not successfull
 	 */
 	public AuthorizationResponse authWithOauth2(String grantType, String code, String redirect_uri, String refresh_token, String client_id, String client_secret) throws Exception {
 		String url = ROOT_URL + "/oauth/token";

@@ -41,7 +41,7 @@ public class EndpointsTests {
 
 	public static final String TOKEN_TYPE = "Bearer";
 
-	//@Test
+	@Test
 	public void testAuthorizeWithDeviceCode() {
 		AuthorizationEndpoints authorizationEndpoint = PeriscopeEndpointFactory.getAuthorizationEndpoint();
 		CreateDeviceCodeResponse createDeviceCodeResponse;

@@ -33,8 +33,8 @@ public class RegionEndpoints extends BaseEndpoints {
 	 * Note that this endpoint redirects to another service. 
 	 * Clients calling this endpoint should handle redirects gracefully.
 	 *
-	 * @throws Exception 
-	 * @returns region
+	 * @throws Exception If operation is not successfull
+	 * @return region in string representation
 	 */
 	public String get() throws Exception {
 		

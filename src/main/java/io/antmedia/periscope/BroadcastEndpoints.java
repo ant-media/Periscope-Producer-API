@@ -34,7 +34,10 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	/**
 	 * Create a new broadcast. If a broadcast already exists and has not been published, this endpoint
 	 * may reuse the broadcast that was created previously.
-	 * @throws Exception 
+	 * @param region String representation of the region 
+	 * @param is_360 Stream is 360 degree or not
+	 * @return CreateBroadcastResponse
+	 * @throws Exception if operation is not successfull
 	 */
 	public CreateBroadcastResponse createBroadcast(String region, boolean is_360) throws Exception {
 
@@ -81,8 +84,8 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	 *   should be a 2-letter ISO 639-1 language code, followed by an optional 2-letter ISO 3166-1
 	 *   region code, separated by an underscore (e.g. en_US)
 	 *   
-	 * @return
-	 * @throws Exception
+	 * @return PublishBroadcastResponse
+	 * @throws Exception If operation is not successfull
 	 */
 	public PublishBroadcastResponse publishBroadcast(String broadcast_id, String title, boolean should_not_tweet, String locale) throws Exception {
 
@@ -119,7 +122,7 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	/**
 	 * @param broadcast_id - Id of the broadcast to stop
 	 *
-	 * @throws Exception
+	 * @throws Exception If operation is not successfull
 	 */
 	public void stopBroadcast(String broadcast_id) throws Exception {
 
@@ -148,9 +151,9 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	}
 	
 	/**
-	 * id - Id of the broadcast to retrieve
-	 * @return
-	 * @throws Exception
+	 * @param id - Id of the broadcast to retrieve
+	 * @return Broadcast
+	 * @throws Exception If operation is not successfull
 	 */
 	public Broadcast getBroadcast(String id) throws Exception {
 

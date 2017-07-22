@@ -1,7 +1,6 @@
-package io.antmedia.periscope.response;
+package io.antmedia.api.periscope.response;
 
-import io.antmedia.periscope.AuthorizationEndpoints;
-import io.antmedia.periscope.type.User;
+import io.antmedia.api.periscope.type.User;
 
 public class CheckDeviceCodeResponse {
 

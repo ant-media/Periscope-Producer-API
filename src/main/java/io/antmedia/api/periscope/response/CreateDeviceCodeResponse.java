@@ -1,4 +1,4 @@
-package io.antmedia.periscope.response;
+package io.antmedia.api.periscope.response;
 
 public class CreateDeviceCodeResponse{
 

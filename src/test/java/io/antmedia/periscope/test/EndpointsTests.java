@@ -1,6 +1,9 @@
 package io.antmedia.periscope.test;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 import java.util.Locale;
 import java.util.regex.Matcher;
@@ -8,16 +11,16 @@ import java.util.regex.Pattern;
 
 import org.junit.Test;
 
-import io.antmedia.periscope.AuthorizationEndpoints;
-import io.antmedia.periscope.BroadcastEndpoints;
-import io.antmedia.periscope.PeriscopeEndpointFactory;
-import io.antmedia.periscope.RegionEndpoints;
-import io.antmedia.periscope.response.AuthorizationResponse;
-import io.antmedia.periscope.response.CheckDeviceCodeResponse;
-import io.antmedia.periscope.response.CreateBroadcastResponse;
-import io.antmedia.periscope.response.CreateDeviceCodeResponse;
-import io.antmedia.periscope.response.PublishBroadcastResponse;
-import io.antmedia.periscope.type.Broadcast;
+import io.antmedia.api.periscope.AuthorizationEndpoints;
+import io.antmedia.api.periscope.BroadcastEndpoints;
+import io.antmedia.api.periscope.PeriscopeEndpointFactory;
+import io.antmedia.api.periscope.RegionEndpoints;
+import io.antmedia.api.periscope.response.AuthorizationResponse;
+import io.antmedia.api.periscope.response.CheckDeviceCodeResponse;
+import io.antmedia.api.periscope.response.CreateBroadcastResponse;
+import io.antmedia.api.periscope.response.CreateDeviceCodeResponse;
+import io.antmedia.api.periscope.response.PublishBroadcastResponse;
+import io.antmedia.api.periscope.type.Broadcast;
 
 
 /**

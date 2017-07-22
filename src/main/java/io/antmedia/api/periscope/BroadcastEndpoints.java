@@ -1,4 +1,4 @@
-package io.antmedia.periscope;
+package io.antmedia.api.periscope;
 
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
@@ -9,14 +9,10 @@ import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-import com.google.gson.Gson;
-
-import io.antmedia.periscope.response.CreateBroadcastResponse;
-import io.antmedia.periscope.response.CreateDeviceCodeResponse;
-import io.antmedia.periscope.response.PublishBroadcastResponse;
-import io.antmedia.periscope.type.Broadcast;
+import io.antmedia.api.periscope.response.CreateBroadcastResponse;
+import io.antmedia.api.periscope.response.PublishBroadcastResponse;
+import io.antmedia.api.periscope.type.Broadcast;
 
 public class BroadcastEndpoints extends BaseEndpoints {
 

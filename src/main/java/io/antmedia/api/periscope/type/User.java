@@ -1,4 +1,4 @@
-package io.antmedia.periscope.type;
+package io.antmedia.api.periscope.type;
 
 import java.util.List;
 

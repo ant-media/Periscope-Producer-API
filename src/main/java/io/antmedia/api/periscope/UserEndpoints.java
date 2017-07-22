@@ -1,7 +1,4 @@
-package io.antmedia.periscope;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
+package io.antmedia.api.periscope;
 
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
@@ -10,13 +7,8 @@ import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
 
-import com.google.gson.Gson;
-
-import io.antmedia.periscope.response.UserResponse;
-import io.antmedia.periscope.type.User;
+import io.antmedia.api.periscope.response.UserResponse;
 
 public class UserEndpoints extends BaseEndpoints {
 

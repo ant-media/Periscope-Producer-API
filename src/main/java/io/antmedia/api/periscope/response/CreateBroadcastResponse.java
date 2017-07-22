@@ -1,8 +1,8 @@
-package io.antmedia.periscope.response;
+package io.antmedia.api.periscope.response;
 
-import io.antmedia.periscope.type.Broadcast;
-import io.antmedia.periscope.type.Encoder;
-import io.antmedia.periscope.type.VideoAccess;
+import io.antmedia.api.periscope.type.Broadcast;
+import io.antmedia.api.periscope.type.Encoder;
+import io.antmedia.api.periscope.type.VideoAccess;
 
 public class CreateBroadcastResponse {
 

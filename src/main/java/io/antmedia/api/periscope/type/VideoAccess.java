@@ -1,4 +1,4 @@
-package io.antmedia.periscope.type;
+package io.antmedia.api.periscope.type;
 
 /**
  * Provides information for playing back a running stream

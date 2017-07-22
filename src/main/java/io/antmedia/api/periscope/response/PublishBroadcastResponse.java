@@ -1,6 +1,6 @@
-package io.antmedia.periscope.response;
+package io.antmedia.api.periscope.response;
 
-import io.antmedia.periscope.type.Broadcast;
+import io.antmedia.api.periscope.type.Broadcast;
 
 public class PublishBroadcastResponse {
 	

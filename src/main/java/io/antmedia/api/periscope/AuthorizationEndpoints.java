@@ -1,34 +1,17 @@
-package io.antmedia.periscope;
-
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.net.ssl.HttpsURLConnection;
+package io.antmedia.api.periscope;
 
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
-import org.apache.http.NameValuePair;
 import org.apache.http.client.HttpClient;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
-import org.apache.http.client.methods.HttpPost;
 import org.apache.http.client.methods.HttpUriRequest;
 import org.apache.http.client.methods.RequestBuilder;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicNameValuePair;
 import org.json.simple.JSONObject;
 
-import com.google.gson.Gson;
-
-import io.antmedia.periscope.response.AuthorizationResponse;
-import io.antmedia.periscope.response.CheckDeviceCodeResponse;
-import io.antmedia.periscope.response.CreateDeviceCodeResponse;
+import io.antmedia.api.periscope.response.AuthorizationResponse;
+import io.antmedia.api.periscope.response.CheckDeviceCodeResponse;
+import io.antmedia.api.periscope.response.CreateDeviceCodeResponse;
 
 public class AuthorizationEndpoints extends BaseEndpoints{
 

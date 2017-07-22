@@ -1,4 +1,4 @@
-package io.antmedia.periscope.type;
+package io.antmedia.api.periscope.type;
 
 /**
  * Information about a Periscope Broadcast

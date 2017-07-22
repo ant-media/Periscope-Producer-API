@@ -1,6 +1,6 @@
-package io.antmedia.periscope;
+package io.antmedia.api.periscope;
 
-import io.antmedia.periscope.response.AuthorizationResponse;
+import io.antmedia.api.periscope.response.AuthorizationResponse;
 
 public class PeriscopeEndpointFactory {
 	

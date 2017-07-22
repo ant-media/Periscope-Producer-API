@@ -1,4 +1,4 @@
-package io.antmedia.periscope;
+package io.antmedia.api.periscope;
 
 import java.io.BufferedReader;
 import java.io.IOException;

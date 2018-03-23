@@ -22,6 +22,8 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	private static final String TITLE_KEY = "title";
 	private static final String SHOULD_NOT_TWEET_KEY = "should_not_tweet";
 	private static final String LOCALE_KEY = "locale";
+	private static final Object IS_LOW_LATENCY = "is_low_latency";
+	private static final Object ENABLE_SUPER_HEARTS = "enable_super_hearts";
 	
 	public BroadcastEndpoints(String tokenType, String accessToken) {
 		super(tokenType, accessToken);
@@ -35,7 +37,7 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	 * @return CreateBroadcastResponse
 	 * @throws Exception if operation is not successfull
 	 */
-	public CreateBroadcastResponse createBroadcast(String region, boolean is_360) throws Exception {
+	public CreateBroadcastResponse createBroadcast(String region, boolean is_360, boolean is_low_latency) throws Exception {
 
 		String url = ROOT_URL + "/broadcast/create";
 
@@ -43,6 +45,7 @@ public class BroadcastEndpoints extends BaseEndpoints {
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(REGION_KEY, region);
 		jsonObject.put(IS_360_KEY, is_360);
+		jsonObject.put(IS_LOW_LATENCY, is_low_latency);
 		StringEntity params =new StringEntity(jsonObject.toJSONString());
 
 		HttpUriRequest post = RequestBuilder.post()
@@ -83,7 +86,7 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	 * @return PublishBroadcastResponse
 	 * @throws Exception If operation is not successfull
 	 */
-	public PublishBroadcastResponse publishBroadcast(String broadcast_id, String title, boolean should_not_tweet, String locale) throws Exception {
+	public PublishBroadcastResponse publishBroadcast(String broadcast_id, String title, boolean should_not_tweet, String locale, boolean enable_super_hearts) throws Exception {
 
 		String url = ROOT_URL + "/broadcast/publish";
 
@@ -93,6 +96,7 @@ public class BroadcastEndpoints extends BaseEndpoints {
 		jsonObject.put(TITLE_KEY, title);
 		jsonObject.put(SHOULD_NOT_TWEET_KEY, should_not_tweet);
 		jsonObject.put(LOCALE_KEY, locale);
+		jsonObject.put(ENABLE_SUPER_HEARTS, enable_super_hearts);
 		StringEntity params =new StringEntity(jsonObject.toJSONString());
 
 		HttpUriRequest post = RequestBuilder.post()
@@ -152,7 +156,6 @@ public class BroadcastEndpoints extends BaseEndpoints {
 	 * @throws Exception If operation is not successfull
 	 */
 	public Broadcast getBroadcast(String id) throws Exception {
-
 		
 		String url = ROOT_URL + "/broadcast?id="+id;
 

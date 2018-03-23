@@ -34,10 +34,14 @@ import io.antmedia.api.periscope.type.Broadcast;
 
 public class EndpointsTests {
 
-	public static final String CLIENT_ID = "3uUjYUYH8XX8ikOhfo45s_slM4xDZ9fxMN32T3m5xIrTU2LyrO";
+/*	public static final String CLIENT_ID = "3uUjYUYH8XX8ikOhfo45s_slM4xDZ9fxMN32T3m5xIrTU2LyrO";
 	//"WRITE YOUR DEV CLIENT ID";
 
 	public static final String CLIENT_SECRET = "WRITE YOUR DEV CLIENT SECRET";
+*/	
+	
+	public String CLIENT_ID = "5PXoLeNEcFEKBYOh2W-lJHTF_D584hF4XI-ENDIHCOCzArNaMx";
+	public String CLIENT_SECRET = "tYHjmoe42iD1FX0wSLgF7-4kdnM9mabgznuSdaSkVDFFflYomK";
 
 	public static String DEV_ACCESS_TOKEN = "WRITE YOUR DEV ACCESS TOKEN ";
 	public static String DEV_REFRESH_TOKEN = "WRITE YOUR DEV REFRESH TOKEN ";
@@ -130,7 +134,7 @@ public class EndpointsTests {
 		RegionEndpoints regionEndpoints = periscopeEndpointFactory.getRegionEndpoints();
 		
 		try {
-			CreateBroadcastResponse createBroadcastResponse = endpoint.createBroadcast(regionEndpoints.get(), false);
+			CreateBroadcastResponse createBroadcastResponse = endpoint.createBroadcast(regionEndpoints.get(), false, true);
 			assertNotNull(createBroadcastResponse.broadcast);
 			assertNotNull(createBroadcastResponse.encoder.display_name);
 			assertNotNull(createBroadcastResponse.encoder.rtmp_url);
@@ -145,7 +149,7 @@ public class EndpointsTests {
 
 
 			String title = "test";
-			PublishBroadcastResponse publishBroadcastResponse = endpoint.publishBroadcast(createBroadcastResponse.broadcast.id, title, true, new Locale("tr", "TR").toString());
+			PublishBroadcastResponse publishBroadcastResponse = endpoint.publishBroadcast(createBroadcastResponse.broadcast.id, title, true, new Locale("tr", "TR").toString(), true);
 
 			assertEquals(createBroadcastResponse.broadcast.id, publishBroadcastResponse.broadcast.id);
 			assertEquals(publishBroadcastResponse.broadcast.state, "running");

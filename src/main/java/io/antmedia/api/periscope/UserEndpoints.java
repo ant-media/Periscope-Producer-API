@@ -9,6 +9,7 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.impl.client.LaxRedirectStrategy;
 
 import io.antmedia.api.periscope.response.UserResponse;
+import io.antmedia.api.periscope.type.User;
 
 public class UserEndpoints extends BaseEndpoints {
 
@@ -22,7 +23,7 @@ public class UserEndpoints extends BaseEndpoints {
 	 * @return UserResponse
 	 * @throws Exception If operation is not successfull
 	 */
-	public UserResponse get() throws Exception {
+	public User get() throws Exception {
 
 		String url = ROOT_URL + "/me";
 
@@ -45,6 +46,6 @@ public class UserEndpoints extends BaseEndpoints {
 			throw new Exception(result.toString());
 		}
 		
-		return gson.fromJson(result.toString(), UserResponse.class);
+		return gson.fromJson(result.toString(), User.class);
 	}
 }

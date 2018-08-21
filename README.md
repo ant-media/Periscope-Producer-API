@@ -1,3 +1,8 @@
+
+[![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.antmedia.api.periscope/PeriscopeAPI/badge.svg)](https://search.maven.org/search?q=g:io.antmedia.api.periscope)
+
+ChatEndpoint is implemented according to documentation in version 1.2.0
+
 # Periscope Producer API
 Java implementation of Periscope Producer API
 
@@ -7,7 +12,15 @@ and lots of tech sites like [Variety](http://variety.com/2017/digital/news/twitt
 
 ## Installation
  
-Download from [here](https://github.com/ant-media/Periscope-Producer-API/releases) or build by following the Build instructions below. Then add this library to your classpath.
+ ``
+<dependency>
+  <groupId>io.antmedia.api.periscope</groupId>
+  <artifactId>PeriscopeAPI</artifactId>
+  <version>1.2.0</version>
+</dependency>
+``
+
+
 
 ## How To Use
 

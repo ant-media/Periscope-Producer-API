@@ -12,13 +12,13 @@ and lots of tech sites like [Variety](http://variety.com/2017/digital/news/twitt
 
 ## Installation
  
- ``
+ ```
 <dependency>
   <groupId>io.antmedia.api.periscope</groupId>
   <artifactId>PeriscopeAPI</artifactId>
   <version>1.2.0</version>
 </dependency>
-``
+```
 
 
 

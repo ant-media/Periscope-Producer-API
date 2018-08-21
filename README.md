@@ -1,7 +1,7 @@
 
 [![Maven Central](https://maven-badges.herokuapp.com/maven-central/io.antmedia.api.periscope/PeriscopeAPI/badge.svg)](https://search.maven.org/search?q=g:io.antmedia.api.periscope)
 
-ChatEndpoint is implemented according to documentation in version 1.2.0
+ChatEndpoint is implemented in version 1.2.0
 
 # Periscope Producer API
 Java implementation of Periscope Producer API

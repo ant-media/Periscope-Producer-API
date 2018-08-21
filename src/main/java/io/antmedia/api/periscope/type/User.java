@@ -2,6 +2,22 @@ package io.antmedia.api.periscope.type;
 
 import java.util.List;
 
+/**
+ *  "user": {
+ *   "id": "awiefieife",
+ *   "twitter_id": "asdfeimfiein",
+ *   "username": "johnboiles",
+ *   "display_name": "John Boiles",
+ *   "profile_image_urls": [
+ *     {"url": "https://cdn.twitter.com/user/image.jpg"}
+ *   ],
+ *     "locale": "en",
+       "languages": ["en", "fr", "es"],
+       "superfan": true
+ *   }
+ * @author mekya
+ *
+ */
 public class User {
 	
 	
@@ -62,5 +78,20 @@ public class User {
 		 */
 		public String url;
 	}
+	
+	/**
+	 * Locale field, this field is defined in chat endpoint messages
+	 */
+	private String locale;
+	
+	/**
+	 * This field is defined in chat endpoint messages
+	 */
+	private List<String> languages;
+	
+	/**
+	 * this field is defined in chat endpoint message
+	 */
+	private boolean superfan;
 
 }

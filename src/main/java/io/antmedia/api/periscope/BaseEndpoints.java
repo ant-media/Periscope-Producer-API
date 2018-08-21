@@ -10,13 +10,15 @@ import com.google.gson.Gson;
 
 public abstract class BaseEndpoints {
 	
-	public static final String ROOT_URL = "https://public-api.periscope.tv/v1";
+	public static final String ROOT_URL = "https://api.pscp.tv/v1";
 	
-	public static final String USER_AGENT = "AntMedia.AntMediaServer v1.0 Java";
+	public static final String USER_AGENT = "AntMedia Periscope API v1.2.0 Java";
 	
 	public static final String CLIENT_ID_KEY = "client_id";
 	
 	public static final String CLIENT_SECRET_KEY = "client_secret";
+	
+	public static final String SCOPE_KEY = "scope";
 
 	private String tokenType;
 	private String accessToken;

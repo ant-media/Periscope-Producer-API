@@ -5,6 +5,9 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
+import java.net.Inet4Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -43,12 +46,12 @@ public class EndpointsTests {
 	public String CLIENT_ID = "5PXoLeNEcFEKBYOh2W-lJHTF_D584hF4XI-ENDIHCOCzArNaMx";
 	public String CLIENT_SECRET = "tYHjmoe42iD1FX0wSLgF7-4kdnM9mabgznuSdaSkVDFFflYomK";
 
-	public static String DEV_ACCESS_TOKEN = "WRITE YOUR DEV ACCESS TOKEN ";
-	public static String DEV_REFRESH_TOKEN = "WRITE YOUR DEV REFRESH TOKEN ";
+	public static String DEV_ACCESS_TOKEN = "U74w-AspZd1dAMfh7zAIiKl4ROaqo5R9fZeQYsew-eVyLnrcFe";
+	public static String DEV_REFRESH_TOKEN = "0Y0wXUXlUxauJ7uwAZ4kwM82cpBocquA4CEoTmooRdLRpc1O5G";
 
 	public static final String TOKEN_TYPE = "Bearer";
 
-	@Test
+	//@Test
 	public void testAuthorizeWithDeviceCode() {
 		AuthorizationEndpoints authorizationEndpoint = PeriscopeEndpointFactory.getAuthorizationEndpoint();
 		CreateDeviceCodeResponse createDeviceCodeResponse;
@@ -128,6 +131,18 @@ public class EndpointsTests {
 	}
 
 	@Test
+	public void testHostName() {
+		try {
+			
+			String hostAddress = Inet4Address.getByName("api-ws.pscp.tv").getHostAddress();
+			System.out.println("host addr: " + hostAddress);
+		} catch (UnknownHostException e) {
+			e.printStackTrace();
+			fail(e.getMessage());
+		}
+	}
+	
+	@Test
 	public void testCreateBroadcast() {
 		PeriscopeEndpointFactory periscopeEndpointFactory = new PeriscopeEndpointFactory(TOKEN_TYPE, DEV_ACCESS_TOKEN, DEV_REFRESH_TOKEN);
 		BroadcastEndpoints endpoint = periscopeEndpointFactory.getBroadcastEndpoints();
@@ -143,7 +158,7 @@ public class EndpointsTests {
 			assertNotNull(createBroadcastResponse.encoder.recommended_configuration);
 
 			assertNotNull(createBroadcastResponse.video_access.hls_url);
-			assertNotNull(createBroadcastResponse.video_access.https_hls_url);
+			//assertNotNull(createBroadcastResponse.video_access.https_hls_url);
 
 			assertNotNull(createBroadcastResponse.share_url);
 

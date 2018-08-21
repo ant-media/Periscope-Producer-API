@@ -17,6 +17,8 @@ public class PeriscopeEndpointFactory {
 	private String accessToken;
 	
 	private String refreshToken;
+
+	private ChatEndpoints chatEndpoints;
 	
 	public PeriscopeEndpointFactory(String tokenType, String accessToken, String refreshToken) {
 		this.accessToken = accessToken;
@@ -52,6 +54,14 @@ public class PeriscopeEndpointFactory {
 		}
 		return broadcastEndpoints;
 	}
+	
+	public ChatEndpoints getChatEndpoints() {
+		if (chatEndpoints == null) {
+			chatEndpoints = new ChatEndpoints(tokenType, accessToken);
+		}
+		return chatEndpoints;
+	}
+	
 	
 	public AuthorizationResponse refreshToken(String client_id, String client_secret) {
 		AuthorizationEndpoints authEndpoint = getAuthorizationEndpoint();

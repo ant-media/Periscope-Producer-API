@@ -42,12 +42,35 @@ public class AuthorizationEndpoints extends BaseEndpoints{
 	 * @throws Exception if operation is not successfull
 	 */
 	public CreateDeviceCodeResponse createDeviceCode(String client_id) throws Exception {
+		return createDeviceCode(client_id, null);
+	}
+	/**
+	 * Creates a user_code and device_code to use for connecting an encoder (or other device) to a
+	 * user account. This endpoint is strongly rate limited by IP to prevent an attacker from exhausting
+	 * all codes. 
+	 * After creating a user_code and device_code pair, your user interface should display the
+	 * user_code to the user along with the associate_url. The user should then navigate in a web
+	 * browser to the associate_url and type in the user_code. This creates a link between a Periscope
+	 * user account and your software.
+	 * 
+	 * @param client_id - Client ID unique to the hardware/software vendor. Currently these are available
+	 *    by contacting Periscope support.
+	 *    
+	 * @param scope, comma separated scopes like chat, other feature   
+	 *    
+	 * @return CreateDeviceCodeResponse class
+	 * @throws Exception if operation is not successfull
+	 */
+	public CreateDeviceCodeResponse createDeviceCode(String client_id, String scope) throws Exception {
 
 		String url = ROOT_URL + "/device_code/create";
 
 		HttpClient client = HttpClients.custom().build();
 		JSONObject jsonObject = new JSONObject();
 		jsonObject.put(CLIENT_ID_KEY, client_id);
+		if (scope != null) {
+			jsonObject.put(SCOPE_KEY, scope);
+		}
 		StringEntity params =new StringEntity(jsonObject.toJSONString());
 
 		HttpUriRequest post = RequestBuilder.post()

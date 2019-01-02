@@ -1,5 +1,7 @@
 package io.antmedia.api.periscope;
 
+import java.nio.charset.Charset;
+
 import org.apache.http.HttpHeaders;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
@@ -46,10 +48,11 @@ public class BroadcastEndpoints extends BaseEndpoints {
 		jsonObject.put(REGION_KEY, region);
 		jsonObject.put(IS_360_KEY, is_360);
 		jsonObject.put(IS_LOW_LATENCY, is_low_latency);
-		StringEntity params =new StringEntity(jsonObject.toJSONString());
+		StringEntity params =new StringEntity(jsonObject.toJSONString(), Charset.forName("UTF-8"));
 
 		HttpUriRequest post = RequestBuilder.post()
 				.setUri(url)
+				.setCharset(Charset.forName("UTF-8"))
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
 				.setHeader(HttpHeaders.USER_AGENT, USER_AGENT)
 				.setHeader(HttpHeaders.AUTHORIZATION, getTokenType() + " " + getAccessToken())
@@ -97,10 +100,11 @@ public class BroadcastEndpoints extends BaseEndpoints {
 		jsonObject.put(SHOULD_NOT_TWEET_KEY, should_not_tweet);
 		jsonObject.put(LOCALE_KEY, locale);
 		jsonObject.put(ENABLE_SUPER_HEARTS, enable_super_hearts);
-		StringEntity params =new StringEntity(jsonObject.toJSONString());
+		StringEntity params =new StringEntity(jsonObject.toJSONString(), Charset.forName("UTF-8"));
 
 		HttpUriRequest post = RequestBuilder.post()
 				.setUri(url)
+				.setCharset(Charset.forName("UTF-8"))
 				.setHeader(HttpHeaders.CONTENT_TYPE, "application/json")
 				.setHeader(HttpHeaders.USER_AGENT, USER_AGENT)
 				.setHeader(HttpHeaders.AUTHORIZATION, getTokenType() + " " + getAccessToken())

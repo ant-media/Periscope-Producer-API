@@ -46,8 +46,8 @@ public class EndpointsTests {
 	public String CLIENT_ID = "5PXoLeNEcFEKBYOh2W-lJHTF_D584hF4XI-ENDIHCOCzArNaMx";
 	public String CLIENT_SECRET = "tYHjmoe42iD1FX0wSLgF7-4kdnM9mabgznuSdaSkVDFFflYomK";
 
-	public static String DEV_ACCESS_TOKEN = "U74w-AspZd1dAMfh7zAIiKl4ROaqo5R9fZeQYsew-eVyLnrcFe";
-	public static String DEV_REFRESH_TOKEN = "0Y0wXUXlUxauJ7uwAZ4kwM82cpBocquA4CEoTmooRdLRpc1O5G";
+	public static String DEV_ACCESS_TOKEN = "NT1C4kWBDKUG8x4gEMPO-8MGpHl39KryIsEwTJHiOIDUuCgQKq";
+	public static String DEV_REFRESH_TOKEN = "AO5Y63_EEAuwY1TgYcxgzYqn-G06RPhjXcVFxDS60VW7aS5-PI";
 
 	public static final String TOKEN_TYPE = "Bearer";
 
